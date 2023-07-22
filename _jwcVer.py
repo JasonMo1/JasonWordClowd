@@ -1,6 +1,6 @@
-# Kernel
-Kernel_version = "0-0-80"
-Kernel_update = "23/04/22 15:20"
+# Core
+Core_version = "0-0-80"
+Core_update = "23/04/22 15:20"
 
 # Releases
 
@@ -19,12 +19,12 @@ class version_what():
     ker0_0_01 = "Use some simple code to invoke wordcloud libary, to make jwc modularization"
     ker0_0_10 = "Add imageio invoke"
     gui0_0_5  = "Rewrite it into a modularization program"
-    cli0_0_50 = "Invoke jwckernel"
+    cli0_0_50 = "Invoke jwcCore"
     cli0_1_00 = "Rewrite some code to simplification the program"
-    ker0_0_25 = "Add variable nonetype prompt into kernel"
+    ker0_0_25 = "Add variable nonetype prompt into Core"
     ker0_0_50 = "Move variable nonetype prompt into concrete releases"
     ker0_0_70 = "Fix imageio invoke"
-    ker0_0_80 = "add 'jwcKernel_Invoke' funcion to invoke kernel easily"
+    ker0_0_80 = "add 'jwcCore_Invoke' funcion to invoke Core easily"
     gui0_1_0  = "Add some fluentpyqt widgets"
     easy0_0_1 = "Make a easy release to study JasonWordCloud quickly"
 

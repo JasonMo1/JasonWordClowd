@@ -2,7 +2,7 @@
 from absl import flags
 import random
 
-import _jwcKernel as jwcKernel
+import _jwcCore as jwcCore
 import _jwcVer as jwcVer
 
 FLAGS = flags.FLAGS
@@ -20,79 +20,25 @@ flags.DEFINE_string('o', None, 'Output name.')
 def main(argv):
     del argv
 
-    if FLAGS.B:
-        flagbag = FLAGS.B        
-    else:
-        flagbag = None
-
-    if FLAGS.W:
-        flagwid = FLAGS.W
-    else:
-        flagwid = 2000
-
-    if FLAGS.H:
-        flaghei = FLAGS.H
-    else:
-        flaghei = 1200
-
-    if FLAGS.C:
-        flagbac = FLAGS.C
-    else:
-        flagbac = "white"
-
-    if FLAGS.F:
-        flagfon = FLAGS.F
-    else:
-        flagfon = "font\\dyh.ttf"
-
-    if FLAGS.D:
-        flagdoc = FLAGS.D
-    else:
-        flagdoc = "doc\\LICENSE.txt"
-
-    if FLAGS.E:
-        flagenc = FLAGS.E
-    else:
-        flagenc = "utf-8"
-
-    if FLAGS.h:
-        flagh = True
-    else:
-        flagh = False
-
-    if FLAGS.ver:
-        flagver = True
-    else:
-        flagver = False
-
-    if FLAGS.o:
-        flagout = "output\\"+FLAGS.o+".png"
-    else:
-        opnm1 = random.randint(0,99)
-        opnm2 = random.randint(0,99)
-        opnm3 = random.randint(0,99)
-        opnm4 = random.randint(0,99)
-        randout = "output\\"+str(opnm1)+str(opnm2)+str(opnm3)+str(opnm4)+".png"
-        flagout = randout
-
-    # change flag name into simply names
-    #
-    # Variable naming rules:
-    # Use four bits to interpretation where this variable from,
-    # and three bits to interpretation what will this variable do.
-    #
-    # example:  flag|bag-----This variable is use to define wordcloud's background.
-    #           |            To be distinguish "flagbag" and "flagbac", made some diffrences between them.    
-    #           |
-    #       this variable is from a flag      
+    flagbag = FLAGS.B if FLAGS.B else None
+    flagwid = FLAGS.W if FLAGS.W else 2000
+    flaghei = FLAGS.H if FLAGS.H else 1200
+    flagbac = FLAGS.C if FLAGS.C else "white"
+    flagfon = FLAGS.F if FLAGS.F else "font\\dyh.ttf"
+    flagdoc = FLAGS.D if FLAGS.D else "text\\LICENSE.txt"
+    flagenc = FLAGS.E if FLAGS.E else "utf-8"
+    flagh = True if FLAGS.h else False
+    flagver = True if FLAGS.ver else False
+    flagout = "output\\"+FLAGS.o+".png" if FLAGS.o else "output\\"+str(random.randint(0,99))+str(random.randint(0,99))+str(random.randint(0,99))+str(random.randint(0,99))+".png"
 
     if flagh == False:
         if flagver == False:
-            jwcKernel.jwcKernel_Invoke(flagbag, flagwid, flaghei, flagbac, flagfon, flagdoc, flagenc, flagout)
+            args = [flagbag, flagwid, flaghei, flagbac, flagfon, flagdoc, flagenc, flagout]
+            jwcCore.jwcCore_Main(args)
             
         else:
             print("Jasonwordcloud(CLI) version:"+"       "+jwcVer.jwcCLI_version)
-            print("Jasonwordcloud(Kernel) version:"+"    "+jwcVer.Kernel_version)
+            print("Jasonwordcloud(Core) version:"+"      "+jwcVer.Core_version)
             print("Last update(CLI):"+"                  "+jwcVer.jwcCLI_update)
 
     else:
@@ -107,7 +53,7 @@ def main(argv):
         print('-h:    Help')
         print('-ver:  Version')
         print('-o     Outputfile name')
-        print('\n\n-----ABOUT-----\nSoftware by Jasonmo <jasonmo2009@hotmail.com>\n\nOpen Source licence:Apache2.0\n\nUse "-ver" flag for version and realeases.')
+        print('\n\n-----ABOUT-----\nSoftware by Jasonmo <jasonmo2009@hotmail.com>\n\nOpen Source licence: Apache2.0\n\nUse "-ver" flag for version and realeases.')
 
 if __name__ == '__main__':
-        app.run(main)
+    app.run(main)
